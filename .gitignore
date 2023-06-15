@@ -10,6 +10,7 @@
 
 # production
 /build
+/server/PromisePool.js
 
 # misc
 .DS_Store
