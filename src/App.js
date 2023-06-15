@@ -7,6 +7,7 @@ import { SignUpForm } from './Pages/SignUpForm';
 import { HomePage } from './Pages/HomePage';
 import { EmployerTask } from './Pages/EmployerTask';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginTest from './Pages/LoginTest';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 					<Route path='/employee-page' element={<EmployeePage />} />
 				</Routes>
 			</BrowserRouter>
+			<LoginTest />
 		</div>
 	);
 }
