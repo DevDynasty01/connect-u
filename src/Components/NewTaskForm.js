@@ -7,6 +7,7 @@ export const NewTaskForm = () => {
     const [date, setDate] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
     const [employees, setEmployees] = useState([]);
+    const [selected, setSelected] = useState(employees[0]);
     let refTask = useRef(null);
     //TODO 1: add new task to DB everytime a manager writes a task
     //TODO 2: add calendar to select date the task is assigned to
@@ -23,6 +24,7 @@ export const NewTaskForm = () => {
     const addNewTask = () => {
         refTask.current.value = '';
         console.log('it sent!!')
+        console.log(selected)
     }
 
     const pickDate = () => {
@@ -47,13 +49,15 @@ export const NewTaskForm = () => {
             <tr>
                 <td>Assign to</td>
                 
-                <td>{
-                    employees.map(p=>{
-                        return <select name='employees' id='employees' key={p.id}>
-                        <option>{p.name}</option>
-                    </select>
-                    })
-                    } </td>
+                <td>
+                <select  value={selected} onChange={e => setSelected(e.target.value.name)}>
+                     {employees.map((value) => (
+                       <option value={value.name} key={value.id}>
+                          {value.name}
+                       </option>
+                     ))}
+                </select>
+                </td>
             </tr>
             </tbody>
 

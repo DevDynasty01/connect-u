@@ -16,11 +16,11 @@ app.get('/employees', cors(corsOptions), async (req, res) => {
     res.send(name);
 })
 
-app.post('/employees', cors(corsOptions), async (req, res) => {
-    let { name, task } = req.body; 
-    const [newTask] = await pool.execute('INSERT INTO users (task) VALUES (?) WHERE name = ?', [task, name])
-    res.send(newTask);
-})
+// app.post('/employees', cors(corsOptions), async (req, res) => {
+//     let { name, task } = req.body; 
+//     const [newTask] = await pool.execute('INSERT INTO users (task) VALUES (?) WHERE name = ?', [task, name])
+//     res.send(newTask);
+// })
 
 app.listen(PORT, () => {
     console.log(`Express web API running on port ${PORT}.`)
