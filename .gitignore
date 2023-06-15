@@ -10,7 +10,8 @@
 
 # production
 /build
-
+#promisePool
+/server/promisePool.js
 # misc
 .DS_Store
 .env.local
