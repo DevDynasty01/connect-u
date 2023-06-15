@@ -50,10 +50,11 @@ export const NewTaskForm = () => {
                 <td>Assign to</td>
                 
                 <td>
-                <select  value={selected} onChange={e => setSelected(e.target.value.name)}>
+                <select  value={selected} onChange={e => setSelected(e.target.value.first_name)}>
                      {employees.map((value) => (
-                       <option value={value.name} key={value.id}>
-                          {value.name}
+                       <option value={value.first_name} key={value.id}>
+                          {value.first_name}
+                          {console.log (employees)}
                        </option>
                      ))}
                 </select>
