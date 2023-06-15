@@ -6,13 +6,13 @@ import { LoginForm } from './Pages/LoginForm';
 import { SignUpForm } from './Pages/SignUpForm';
 import { HomePage } from './Pages/HomePage';
 import { EmployerTask } from './Pages/EmployerTask';
+import { NewTaskForm } from './Components/NewTaskForm';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
 		<div className='App'>
 			<header>
-				<p>Hello.</p>
 			</header>
 			<BrowserRouter>
 				<Routes>
@@ -21,6 +21,7 @@ function App() {
 					<Route path='/new-user' element={<SignUpForm />} />
 					<Route path='/manager-page' element={<EmployerTask />} />
 					<Route path='/employee-page' element={<EmployeePage />} />
+					<Route path='/newtask' element={<NewTaskForm />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
