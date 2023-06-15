@@ -1,8 +1,10 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 // Config
 module.exports = {
 	entry: ['./src/index.js'],
+
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
@@ -22,28 +24,13 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['*', '.js', '.jsx']
+		extensions: ['*', '.js', '.jsx'],
 	},
 	devServer: {
 		port: 3000,
-		// compress: true,
-		// open: true,
-		// historyApiFallback: true,
 		proxy: {
 			'/api': 'http://localhost:8080',
 		},
 	},
-	// devtool: 'inline-source-map',
+	plugins: [new Dotenv()],
 };
-
-// //BackEnd Config
-// const backConfig = {
-// 	output: {
-// 		path: path.resolve(__dirname, '../backend'),
-// 		filename: 'test-server.js',
-// 	},
-// 	externals: [nodeExternals()],
-// };
-
-// Combined 'module.exports'
-// module.exports = [frontConfig, backConfig];

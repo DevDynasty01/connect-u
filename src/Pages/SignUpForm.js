@@ -1,11 +1,44 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+import {
+	createUserWithEmailAndPassword,
+	onAuthStateChanged,
+	signOut,
+} from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig';
 
 export const SignUpForm = () => {
+	const [registerEmail, setRegisterEmail] = useState('');
+	const [registerPassword, setRegisterPassword] = useState('');
+
+	const [user, setUser] = useState({});
+
+	useEffect(() => {
+		onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+		});
+	}, []);
+
+	const register = async () => {
+		try {
+			const user = await createUserWithEmailAndPassword(
+				auth,
+				registerEmail,
+				registerPassword
+			);
+			console.log(user);
+			alert('User created');
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+	const logout = async () => {
+		await signOut(auth);
+	};
+
 	const firstNameRef = useRef('');
 	const lastNameRef = useRef('');
-	const emailRef = useRef('');
 	const userNameRef = useRef('');
-	const passWordRef = useRef('');
 	const phoneNumberRef = useRef('');
 	const addressRef = useRef('');
 
@@ -17,16 +50,8 @@ export const SignUpForm = () => {
 		lastNameRef.current = change.target.value;
 	};
 
-	const handleThirdBox = (change) => {
-		emailRef.current = change.target.value;
-	};
-
 	const handleFourthBox = (change) => {
 		userNameRef.current = change.target.value;
-	};
-
-	const handleFifthBox = (change) => {
-		passWordRef.current = change.target.value;
 	};
 
 	const handleSixthBox = (change) => {
@@ -35,11 +60,6 @@ export const SignUpForm = () => {
 
 	const handleSeventhBox = (change) => {
 		addressRef.current = change.target.value;
-	};
-	const handleClick = () => {
-		alert('User created');
-		console.log(userNameRef.current);
-		console.log(passWordRef.current);
 	};
 
 	return (
@@ -57,8 +77,12 @@ export const SignUpForm = () => {
 			<br />
 
 			<label>Email</label>
-			<input type='email' onChange={handleThirdBox} />
-
+			<input
+				placeholder='Email...'
+				onChange={(event) => {
+					setRegisterEmail(event.target.value);
+				}}
+			/>
 			<br />
 
 			<label>Username</label>
@@ -67,8 +91,12 @@ export const SignUpForm = () => {
 			<br />
 
 			<label>Password</label>
-			<input type='password' onChange={handleFifthBox} />
-
+			<input
+				placeholder='Password...'
+				onChange={(event) => {
+					setRegisterPassword(event.target.value);
+				}}
+			/>
 			<br />
 
 			<label>Phone Number</label>
@@ -79,7 +107,16 @@ export const SignUpForm = () => {
 			<label>Address</label>
 			<input type='address' onChange={handleSeventhBox} />
 
-			<button onClick={handleClick}>Submit</button>
+			<br />
+
+			<button onClick={register}> Create User</button>
+
+			<h4> User Logged In: </h4>
+			{user?.email}
+			<p>User ID: </p>
+			{user?.uid}
+			<br />
+			<button onClick={logout}> Sign Out </button>
 		</>
 	);
 };
