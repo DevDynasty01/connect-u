@@ -7,13 +7,12 @@ import { SignUpForm } from './Pages/SignUpForm';
 import { HomePage } from './Pages/HomePage';
 import { EmployerTask } from './Pages/EmployerTask';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { EmployeeTask } from './Components/EmployeeTask';
 
 function App() {
   return (
 		<div className='App'>
-			<header>
-				<p>Hello.</p>
-			</header>
+		 
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<HomePage />} />
@@ -21,8 +20,10 @@ function App() {
 					<Route path='/new-user' element={<SignUpForm />} />
 					<Route path='/manager-page' element={<EmployerTask />} />
 					<Route path='/employee-page' element={<EmployeePage />} />
+					<Route path='/employee-task' element={<EmployeeTask/>}/>
 				</Routes>
 			</BrowserRouter>
+
 		</div>
 	);
 }
