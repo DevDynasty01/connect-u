@@ -12,15 +12,14 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/employees', cors(corsOptions), async (req, res) => {
-    const [name] = await pool.query('SELECT name FROM employees')
+    const [name] = await pool.query('SELECT * FROM employees')
     res.send(name);
 })
 
-app.post('/employees:id', cors(corsOptions), async (req, res) => {
-    let id = req.params;
-    let { task } = req.body; 
-    const [newTask] = await pool.execute('INSERT INTO users (task) VALUES (?) WHERE id = ?', [task, id])
-    
+app.post('/tasks', cors(corsOptions), async (req, res) => {
+    let { guid, task, status, due_date, date_assigned} = req.body; 
+    const [newTask] = await pool.execute('INSERT INTO tasks (guid, task, status, due_date, date_assigned) values (?, ?, ?, ?, ?)', [guid, task, status, due_date, date_assigned])
+
     res.send(newTask);
 })
 
