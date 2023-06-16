@@ -8,6 +8,7 @@ export const NewTaskForm = () => {
     const [showCalendar, setShowCalendar] = useState(false);
     const [employees, setEmployees] = useState([]);
     const [selected, setSelected] = useState(employees[0]);
+    const [task, setTask]=useState('');
     let refTask = useRef(null);
     //TODO 1: add new task to DB everytime a manager writes a task
     //TODO 2: add calendar to select date the task is assigned to
@@ -20,6 +21,14 @@ export const NewTaskForm = () => {
         };
         fetch();
     },[])
+
+    useEffect(() => {
+        const fetch = async () => {
+            const newTask = ( await axios.get(`http://localhost:8080/employees/${employees.id}`)).data
+            setTask(newTask);
+        };
+        fetch();
+    },[employees])
 
     const addNewTask = () => {
         console.log(refTask.current.value)
