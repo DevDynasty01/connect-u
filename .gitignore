@@ -10,6 +10,13 @@
 
 # production
 /build
+<<<<<<< HEAD
+#promisePool
+/server/promisePool.js
+
+
+# pool
+/server/pool.js
 
 # misc
 .DS_Store
