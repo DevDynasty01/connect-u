@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import {
 	createUserWithEmailAndPassword,
@@ -8,8 +10,11 @@ import {
 import { auth } from '../firebase/firebaseConfig';
 
 export const SignUpForm = () => {
+	const navigate = useNavigate();
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');
+
+	const [registeredRole, setRegisteredRole] = useState('');
 
 	const [user, setUser] = useState({});
 
@@ -25,9 +30,18 @@ export const SignUpForm = () => {
 				auth,
 				registerEmail,
 				registerPassword
-			);
+			).then((userCredential) => {
+				const url = `http://localhost:8080/users`;
+				axios.post(url, {
+					email: userCredential.user.email,
+					guid: userCredential.user.uid,
+					role: registeredRole,
+				});
+			});
+
 			console.log(user);
 			alert('User created');
+			navigate('/login');
 		} catch (error) {
 			console.log(error.message);
 		}
@@ -37,7 +51,7 @@ export const SignUpForm = () => {
 	};
 
 	const firstNameRef = useRef('');
-	const lastNameRef = useRef('');
+	const roleRef = useRef('');
 	const userNameRef = useRef('');
 	const phoneNumberRef = useRef('');
 	const addressRef = useRef('');
@@ -47,7 +61,7 @@ export const SignUpForm = () => {
 	};
 
 	const handleSecondBox = (change) => {
-		lastNameRef.current = change.target.value;
+		roleRef.current = change.target.value;
 	};
 
 	const handleFourthBox = (change) => {
@@ -71,9 +85,23 @@ export const SignUpForm = () => {
 
 			<br />
 
-			<label>Last Name</label>
-			<input type='text' onChange={handleSecondBox} />
-
+			{/* Make it a dropdown */}
+			<label>Role</label>
+			<select
+				name='role'
+				onChange={(event) => {
+					setRegisteredRole(event.target.value);
+				}}
+			>
+				{' '}
+				<option key='clear' value=''></option>
+				<option key='employee' value='Employee'>
+					Employee
+				</option>
+				<option key='manager' value='Manager'>
+					Manager
+				</option>
+			</select>
 			<br />
 
 			<label>Email</label>

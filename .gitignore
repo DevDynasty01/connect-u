@@ -11,6 +11,9 @@
 # production
 /build
 
+#PromisePool
+/server/PromisePool.js
+
 # Firebase Config
 /src/firebase/firebaseConfig.js
 serviceAccountKey.json
