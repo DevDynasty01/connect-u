@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+
+
 export const EmployeeTask = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
+  // const [selectedStatus, setSelectedStatus] = useState("");
+
+  const logout = () => {
+    console.log("You are logged out");
+    navigate("/");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://localhost:8080/employees"
-        );
-        const userData = response.data;
-        setData(userData);
-        console.log(userData);
+        const response = (
+          await axios.get(`http://localhost:8080/tasks/`)
+        ).data;
+        setData(response);
+       console.log('response:', response)
       } catch (error) {
         console.log(error);
       }
@@ -20,8 +30,15 @@ export const EmployeeTask = () => {
     fetchData();
   }, []);
 
+  const handleStatusChange = (itemId, selectedValue) => {
+    const updatedData = data.map((item) =>
+      item.id === itemId ? { ...item, Status: selectedValue } : item
+    );
+    setData(updatedData);
+  };
+
   return (
-    <div>
+    <div className="Table">
       Employee Dashboard
       <br />
       <table>
@@ -36,11 +53,14 @@ export const EmployeeTask = () => {
         <tbody>
           {data.map((item) => (
             <tr key={item.id}>
-              <td>{item.Task}</td>
-              <td>{item.AssignDate}</td>
-              <td>{item.DueDate}</td>
+              <td>{item.task}</td>
+              <td>{item.date_assigned}</td>
+              <td>{item.due_date}</td>
               <td>
-                <select value={item.Status}>
+                <select
+                  value={item.status}
+                  onChange={(e) => handleStatusChange(item.id, e.target.value)}
+                >
                   <option value="Pending">Pending</option>
                   <option value="In Progress">In Progress</option>
                   <option value="Completed">Completed</option>
@@ -50,6 +70,7 @@ export const EmployeeTask = () => {
           ))}
         </tbody>
       </table>
+      <button onClick={logout}>Log out</button>
     </div>
   );
 };
