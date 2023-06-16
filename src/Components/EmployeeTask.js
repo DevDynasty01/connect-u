@@ -8,7 +8,7 @@ export const EmployeeTask = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
+          "https://localhost:8080/employees"
         );
         const userData = response.data;
         setData(userData);
