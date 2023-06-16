@@ -4,9 +4,16 @@ export const EmployerTask = () => {
 	return (
 		<>
 			<div>Welcome to Employer Dashboard</div>
+
+			<img
+				src='https://pbs.twimg.com/profile_images/626331479061233664/9BNQV22V_400x400.jpg'
+				alt='Profile Pic'
+			></img>
+
 			<br />
 			<div>
 				Project Management:
+				
 				<br />
 				<button> 1.Task assignments </button>
 				<br />
@@ -30,24 +37,11 @@ export const EmployerTask = () => {
 				<button>4.Task status updates</button>
 			</div>
 			<br />
-			<div> Meeting schedules and reminders </div>
-			<br />
-			<div>
-				<button>Attendance records</button>
-			</div>
-			<br />
-
-			<div>
-				Chat
-				<br />
-				<button>Team chat and messaging</button>
-			</div>
-			<br />
+	
 			<div>
 				<button> Log Out</button>
 			</div>
 
-			<footer> logo ,image, time, </footer>
 		</>
 	);
 };
