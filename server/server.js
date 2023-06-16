@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/employees', cors(corsOptions), async (req, res) => {
-    const [name] = await pool.query('SELECT name FROM users')
+    const [name] = await pool.query('SELECT * FROM users')
     res.send(name);
 })
 

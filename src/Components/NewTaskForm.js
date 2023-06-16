@@ -22,8 +22,8 @@ export const NewTaskForm = () => {
     },[])
 
     const addNewTask = () => {
+        console.log(refTask.current.value)
         refTask.current.value = '';
-        console.log('it sent!!')
         console.log(selected)
     }
 
