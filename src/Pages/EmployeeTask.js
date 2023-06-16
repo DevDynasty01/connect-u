@@ -20,7 +20,7 @@ export const EmployeeTask = () => {
 
         const response = await axios.get(
 
-          "https://jsonplaceholder.typicode.com/todos"
+          "https://jsonplaceholder.typicode.com/todo"
 
         );
 
