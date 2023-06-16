@@ -1,6 +1,34 @@
-import React from 'react';
+import React from "react";
+
+import { useNavigate } from 'react-router-dom'
+
+
+
+
+// import './EmployerStyle.css'
+
+
+
 
 export const EmployerTask = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+
+      console.log('You are logged out');
+      navigate('/')
+  }
+
+
+
+
+  const TaskAssignment = () => {
+    console.log('You are logged out');
+    navigate('/Example')
+
+}
+
+  
 	return (
 		<>
 			<div>Welcome to Employer Dashboard</div>
@@ -45,3 +73,4 @@ export const EmployerTask = () => {
 		</>
 	);
 };
+
