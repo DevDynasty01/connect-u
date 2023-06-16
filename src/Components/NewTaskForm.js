@@ -24,14 +24,15 @@ export const NewTaskForm = () => {
 
     useEffect(() => {
         const fetch = async () => {
-            const newTask = ( await axios.get(`http://localhost:8080/employees/${employees.id}`)).data
+            const newTask = ( await axios.post(`http://localhost:8080/employees/${employees.id}`)).data
             setTask(newTask);
         };
         fetch();
     },[employees])
 
     const addNewTask = () => {
-        console.log(refTask.current.value)
+        setTask(refTask.current.value)
+        console.log(task)
         refTask.current.value = '';
         console.log(selected)
     }
