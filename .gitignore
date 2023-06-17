@@ -5,11 +5,21 @@
 /.pnp
 .pnp.js
 
+#PromisePool
+/server/PromisePool.js
+
 # testing
 /coverage
 
 # production
 /build
+<<<<<<< HEAD
+#promisePool
+/server/promisePool.js
+
+
+# pool
+/server/pool.js
 
 #PromisePool
 /server/PromisePool.js
