@@ -83,16 +83,16 @@ export const LoginForm = () => {
 
 				<button onClick={login}>LOGIN</button> 
 				<p className='not-registered'>Don't have an account 
-				<a href="http://localhost:3000/new-user"> Create an Sign in</a></p>
+				<a href="http://localhost:3000/new-user"> Create one here!</a></p>
 				</form>
 			</div>
 
-			<h4> User Logged In: </h4>
+			{/* <h4> User Logged In: </h4>
 			{user?.email}
 			<p>User ID: </p>
 			{user?.uid}
 			<br />
-			<button onClick={logout}> Log Out </button>
+			<button onClick={logout}> Log Out </button> */}
 		
 		</div>
 	);
