@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 
 
 
 
 export const EmployeeTask = () => {
-
   const [data, setData] = useState([]);
-
-
-
 
   useEffect(() => {
 
     const fetchData = async () => {
-
       try {
-
         const response = await axios.get(
 
           "https://jsonplaceholder.typicode.com/todo"
@@ -25,15 +18,12 @@ export const EmployeeTask = () => {
         );
 
         const userData = response.data;
-
         setData(userData);
-
         console.log(userData);
 
       } catch (error) {
 
         console.log(error);
-
       }
 
     };
@@ -51,7 +41,7 @@ export const EmployeeTask = () => {
 
       Employee Dashboard
 
-      <br />
+
 
       <table>
 

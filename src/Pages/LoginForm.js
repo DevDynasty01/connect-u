@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
 import {
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
+import '../Style/LoginForm.css'
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
@@ -54,26 +54,37 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<div className='boxes'>
-			<div>
-				<h3> Login </h3>
+		<div className='login-page'>
+			<div className='form'>
+				<div className='login-text'>
+				<div className='login-header'>
+				   <h3> Login </h3>
+				   <p>Enter you credentials to login</p>
+				</div>
+				</div>
+
+				<form className='login-form'>
+
 				<input
-					placeholder='Email...'
+					placeholder='email'
 					onChange={(event) => {
 						setLoginEmail(event.target.value);
 					}}
 				/>
-				<br />
+				
 				<input
-					placeholder='Password...'
+					placeholder='password'
 					type='password'
 					onChange={(event) => {
 						setLoginPassword(event.target.value);
 					}}
 				/>
-				<br />
+				
 
-				<button onClick={login}> Login</button>
+				<button onClick={login}>LOGIN</button> 
+				<p className='not-registered'>Don't have an account 
+				<a href="http://localhost:3000/new-user"> Create an Sign in</a></p>
+				</form>
 			</div>
 
 			<h4> User Logged In: </h4>
@@ -82,6 +93,7 @@ export const LoginForm = () => {
 			{user?.uid}
 			<br />
 			<button onClick={logout}> Log Out </button>
+		
 		</div>
 	);
 };
