@@ -14,14 +14,11 @@ const corsOptions = {
 app.use(cors());
 app.use(express.json());
 
-// app.get('/employees', cors(corsOptions), async (req, res) => {
-//     const [name] = await pool.query('SELECT * FROM usersdb')
-//     res.send(name);
-// })
+app.get('/employees', cors(corsOptions), async (req, res) => {
+    const [name] = await pool.query('SELECT * FROM employees')
+    res.send(name);
+})
 
-
-
-//////////////////////////////////////////////////////////THIS WORKS DO NOT TOUCH
 app.get("/tasks/:id", cors(corsOptions), async (req, res) => {
   const taskId = req.params["id"];
   const [result] = await pool.query(`SELECT * FROM tasks where id = ?`, [
@@ -42,13 +39,14 @@ app.get("/tasks/", cors(corsOptions), async (req, res) => {
   body ? res.send(body) : res.status(404).send({ message: "Task not found" });
 });
 
-// app.post('/employees', cors(corsOptions), async (req, res) => {
-//     let { name, task } = req.body;
-//     const [newTask] = await pool.execute('INSERT INTO users (task) VALUES (?) WHERE name = ?', [task, name])
-//     res.send(newTask);
-// })
 
 
+app.post('/tasks/', cors(corsOptions), async (req, res) => {
+  let { guid, task, status, due_date, date_assigned} = req.body; 
+  const [newTask] = await pool.execute('INSERT INTO tasks (guid, task, status, due_date, date_assigned) values (?, ?, ?, ?, ?)', [guid, task, status, due_date, date_assigned])
+
+res.send(newTask);
+});
 app.listen(PORT, () => {
   console.log(`Express web API running on port ${PORT}.`);
 });
