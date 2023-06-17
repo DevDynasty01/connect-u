@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Example = () => {
   const [data, setData] = useState([]);
 
+  const navigate = useNavigate();
+  const logout = () => {
+    console.log("You are logged out");
+    navigate("/");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
+        const response = (await axios.get("http://localhost:8080/tasks/"))
+          .data;
 
-        const userData = response.data;
+      
+        setData(response);
 
-        setData(userData);
-
-        console.log(userData);
+        
       } catch (error) {
         console.log(error);
       }
@@ -26,45 +31,46 @@ export const Example = () => {
   }, []);
 
   return (
-    <div>
-      Employer Dashboard
-      <br />
-      <table>
-        <thead>
-          <tr>
-            <th>Task </th>
+    <>
+      <div className="Table">
+        Employer Dashboard
+        <table>
+          <thead>
+            <tr>
+              <th> Task Name</th>
 
-            <th>Assign To</th>
+              <th> Status</th>
 
-            <th>Assign Date</th>
-            <th>Due Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+              <th>Date Assigned</th>
 
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{item.Task}</td>
+              <th>Due Date</th>
 
-              <td>{item.AssignTo}</td>
-              <td>{item.DueDate}</td>
-              <td>{item.AssignDate}</td>
-              <td>{item.Status}</td>
+              <th>Assigned From</th>
 
-              <td>
-                <select value={item.Status}>
-                  <option value="completed">completed</option>
-
-                  <option value="In Progress">In Progress</option>
-
-                  <option value="Completed">Completed</option>
-                </select>
-              </td>
+              <th>Assigned To</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+
+          <tbody>
+            {data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.task}</td>
+                <td>{item.status}</td>
+                <td>{item.due_date}</td>
+                <td>{item.date_assigned}</td>
+                <td>{item.assigned_from}</td>
+                <td>{item.assigned_to}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <br />
+      <br />
+      <div>
+        <button onClick={logout}> Log out</button>
+      </div>
+    </>
   );
 };

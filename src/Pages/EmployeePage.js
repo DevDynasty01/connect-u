@@ -1,17 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export const EmployeePage = () => {
-	const task1Completed = () => {
-		console.log('Task 1 completed');
-	};
+	  const navigate = useNavigate();
+	
+	  const goToEmployeeTask = () => {
+	    navigate('/employee-task');
+	  };
 
-	const task2Completed = () => {
-		console.log('Task 2 completed');
-	};
-
-	const task3Completed = () => {
-		console.log('Task 3 completed');
-	};
+	  const openChatBox=()=>{
+		navigate('/employee-task');
+	  }
 
 	return (
 		<div>
@@ -24,17 +24,10 @@ export const EmployeePage = () => {
 			<div>
 				<p>Task Manager</p>
 				<ol>
-					<li>
-						<button onClick={task1Completed}>Done</button> New Hire Orientation{' '}
-					</li>
-					<li>
-						<button onClick={task2Completed}>Done</button> Client Meeting
-					</li>
-					<li>
-						<button onClick={task3Completed}>Done</button> Coaching One-On-One
-					</li>
+						<button onClick={goToEmployeeTask}>View Tasks</button> Dashboard{' '}
 				</ol>
 			</div>
 		</div>
 	);
 };
+
