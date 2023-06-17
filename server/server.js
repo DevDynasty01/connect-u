@@ -16,7 +16,7 @@ app.get('/employees', cors(corsOptions), async (req, res) => {
     res.send(name);
 })
 
-app.post('/tasks', cors(corsOptions), async (req, res) => {
+app.post('/tasks/', cors(corsOptions), async (req, res) => {
     let { guid, task, status, due_date, date_assigned} = req.body; 
     const [newTask] = await pool.execute('INSERT INTO tasks (guid, task, status, due_date, date_assigned) values (?, ?, ?, ?, ?)', [guid, task, status, due_date, date_assigned])
 

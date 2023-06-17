@@ -35,7 +35,7 @@ export const NewTaskForm = () => {
 
         let currentDate = new Date().toUTCString()
 
-        const url = `http://localhost:8080/tasks`
+        const url = `http://localhost:8080/tasks/`
 
         e.preventDefault();
 
