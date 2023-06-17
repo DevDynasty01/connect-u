@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import Calendar from 'react-calendar'
 import axios from 'axios'; 
+import 'react-calendar/dist/Calendar.css'
 import '../Style/NewTaskForm.css'
 
 export const NewTaskForm = () => {
@@ -59,17 +60,16 @@ export const NewTaskForm = () => {
 
   return (
     <div className='taskForm'>
-        <table>
+        <table className='newTaskTable-container'>
             <tbody>
             <tr>
                 <td>Task Name</td>
-                <td><input ref={refTask}type = 'text' placeholder='Write your task here'></input></td>
+                <td><input className='newTaskForm' ref={refTask}type = 'text' placeholder='Write your task here'></input></td>
             </tr>
             <tr>
                 <td>Due Date</td>
-                <td> <button onClick={pickDate}>{showCalendar? "Hide Calendar":"Show Calendar"}</button>
+                <td> <button className='taskButton' onClick={pickDate}>{showCalendar? "Hide Calendar":"Show Calendar"}</button>
                 {showCalendar && <Calendar onChange={setSelectedDate} value={selectedDate}/>}
-                Selected date: {selectedDate.toDateString()} 
                 </td>
                 
                 
@@ -90,7 +90,7 @@ export const NewTaskForm = () => {
             </tr>
             </tbody>
 
-            <button onClick={addNewTask}>Send Task</button>
+            <button className='submitButton' onClick={addNewTask}>Send Task</button>
 
         </table>
 
