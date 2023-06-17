@@ -26,13 +26,13 @@ export const HomePage = () => {
 				</ul>
 			</nav>
 			<div className='center'>
-			<h1> Welcome to ConnectU</h1>
-			<h2> Do you have an account?</h2>
-			<h2> Register with us</h2>
-			<div className='buttons'>
-			<button className='home-button' onClick={login}> Log in </button>
-			<button className='home-button'onClick={newUser}> I'm new</button>
-			</div>
+			     <h1> Welcome to ConnectU</h1>
+			     <h2> Do you have an account?</h2>
+			     <h2> Register with us</h2>
+			 <div className='buttons'>
+			     <button className='home-button' onClick={login}> Log in </button>
+			    <button className='home-button'onClick={newUser}> I'm new</button>
+			 </div>
 			</div>
 		</div>
 	);
