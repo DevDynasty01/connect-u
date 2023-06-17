@@ -26,10 +26,10 @@ export const EmployerTask = () => {
       <div className="Dashboard">Welcome to Employer Dashboard</div>
       <br />
       <div className=" project">
-        Project Management:
+        My projects
         <br />
-        <button onClick= {TaskAssignment}>Task assignments </button>
-        <button> Task Assigened </button>
+        <button onClick= {TaskAssignment}>Task managment </button>
+        <button> Assign new task </button>
 
       </div>
       <br />

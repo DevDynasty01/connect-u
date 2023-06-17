@@ -32,8 +32,8 @@ export const Example = () => {
 
   return (
     <>
-      <div className="Table">
-        Employer Dashboard
+      <div className="table-wrapper">
+        <div className="title">Your dashboard</div>
         <table>
           <thead>
             <tr>
@@ -45,7 +45,7 @@ export const Example = () => {
 
               <th>Due Date</th>
 
-              <th>Assigned From</th>
+              {/* <th>Assigned From</th> */}
 
               <th>Assigned To</th>
             </tr>
@@ -58,8 +58,8 @@ export const Example = () => {
                 <td>{item.status}</td>
                 <td>{item.due_date}</td>
                 <td>{item.date_assigned}</td>
-                <td>{item.assigned_from}</td>
                 <td>{item.assigned_to}</td>
+                {/* <td>{item.assigned_from}</td> */}
               </tr>
             ))}
           </tbody>
