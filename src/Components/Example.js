@@ -15,7 +15,7 @@ export const Example = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = (await axios.get("http://localhost:8080/employerTask"))
+        const response = (await axios.get("http://localhost:8080/tasks/"))
           .data;
 
       
