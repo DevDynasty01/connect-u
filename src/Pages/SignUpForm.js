@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,10 +11,15 @@ import { auth } from '../firebase/firebaseConfig';
 
 export const SignUpForm = () => {
 	const navigate = useNavigate();
+
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');
 
+	//Data for SQL DB
+	const [registeredName, setRegisteredName] = useState ('');
+	const [registeredUserName, setRegisteredUserName] = useState('');
 	const [registeredRole, setRegisteredRole] = useState('');
+	const [registeredPosition, setRegisteredPosition] = useState('');
 
 	const [user, setUser] = useState({});
 
@@ -29,18 +34,21 @@ export const SignUpForm = () => {
 			const user = await createUserWithEmailAndPassword(
 				auth,
 				registerEmail,
-				registerPassword
+				registerPassword,
 			).then((userCredential) => {
-				const url = `http://localhost:8080/users`;
+				const url = `http://localhost:8080/employees`;
 				axios.post(url, {
 					email: userCredential.user.email,
 					guid: userCredential.user.uid,
+					name: registeredName,
+					username: registeredUserName,
 					role: registeredRole,
+					position: registeredPosition,
 				});
 			});
 
 			console.log(user);
-			alert('User created');
+			alert('Thank you, user was created');
 			navigate('/login');
 		} catch (error) {
 			console.log(error.message);
@@ -50,42 +58,54 @@ export const SignUpForm = () => {
 		await signOut(auth);
 	};
 
-	const firstNameRef = useRef('');
-	const roleRef = useRef('');
-	const userNameRef = useRef('');
-	const phoneNumberRef = useRef('');
-	const addressRef = useRef('');
-
-	const handleFirstBox = (change) => {
-		firstNameRef.current = change.target.value;
-	};
-
-	const handleSecondBox = (change) => {
-		roleRef.current = change.target.value;
-	};
-
-	const handleFourthBox = (change) => {
-		userNameRef.current = change.target.value;
-	};
-
-	const handleSixthBox = (change) => {
-		phoneNumberRef.current = change.target.value;
-	};
-
-	const handleSeventhBox = (change) => {
-		addressRef.current = change.target.value;
-	};
 
 	return (
 		<>
 			<h1>Sign Up</h1>
 
-			<label>First Name</label>
-			<input type='text' onChange={handleFirstBox} />
-
+			<label>Full Name</label>
+			<input
+				placeholder='Your Name...'
+				type='text'
+				onChange={(event) => {
+					setRegisteredName(event.target.value);
+				}}
+			/>
 			<br />
-
-			{/* Make it a dropdown */}
+			<label>Username</label>
+			<input
+				placeholder='Your Username...'
+				type='text'
+				onChange={(event) => {
+					setRegisteredUserName(event.target.value);
+				}}
+			/>
+			<br />
+			<label>Email</label>
+			<input
+				placeholder='Email...'
+				onChange={(event) => {
+					setRegisterEmail(event.target.value);
+				}}
+			/>
+			<br />
+			<label>Password</label>
+			<input
+				placeholder='Password...'
+				type='password'
+				onChange={(event) => {
+					setRegisterPassword(event.target.value);
+				}}
+			/>
+			<br />
+			<label>Position</label>
+			<input
+				placeholder='Your Position...'
+				type='text'
+				onChange={(event)=>{
+					setRegisteredPosition(event.target.value)
+				}}
+			/>
 			<label>Role</label>
 			<select
 				name='role'
@@ -103,41 +123,7 @@ export const SignUpForm = () => {
 				</option>
 			</select>
 			<br />
-
-			<label>Email</label>
-			<input
-				placeholder='Email...'
-				onChange={(event) => {
-					setRegisterEmail(event.target.value);
-				}}
-			/>
-			<br />
-
-			<label>Username</label>
-			<input type='username' onChange={handleFourthBox} />
-
-			<br />
-
-			<label>Password</label>
-			<input
-				placeholder='Password...'
-				onChange={(event) => {
-					setRegisterPassword(event.target.value);
-				}}
-			/>
-			<br />
-
-			<label>Phone Number</label>
-			<input type='phone number' onChange={handleSixthBox} />
-
-			<br />
-
-			<label>Address</label>
-			<input type='address' onChange={handleSeventhBox} />
-
-			<br />
-
-			<button onClick={register}> Create User</button>
+			<button onClick={register}>Create User!</button>
 
 			<h4> User Logged In: </h4>
 			{user?.email}

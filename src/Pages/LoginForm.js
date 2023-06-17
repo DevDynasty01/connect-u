@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import {
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
@@ -6,11 +9,13 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
 
-
-
 export const LoginForm = () => {
+	const navigate = useNavigate();
+
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
+
+	const [userInfo, setUserInfo] = useState('');
 
 	const [user, setUser] = useState({});
 
@@ -22,12 +27,24 @@ export const LoginForm = () => {
 
 	const login = async () => {
 		try {
-			const user = await signInWithEmailAndPassword(
+			await signInWithEmailAndPassword(
 				auth,
 				loginEmail,
 				loginPassword
-			);
-			console.log(user);
+			).then((userCredential) => {
+				//Getting user info from mysql according to Firebase returned data
+				axios
+					.get(`http://localhost:8080/employees/` + userCredential.user.uid)
+					.then((userData) => {
+						setUserInfo(userData);
+						console.log('role:', userData);
+						if (userData.data.role === 'Manager') {
+							navigate('/manager-page');
+						} else {
+							navigate('/employee-page');
+						}
+					});	
+			});
 		} catch (error) {
 			console.log(error.message);
 		}
@@ -49,6 +66,7 @@ export const LoginForm = () => {
 				<br />
 				<input
 					placeholder='Password...'
+					type='password'
 					onChange={(event) => {
 						setLoginPassword(event.target.value);
 					}}
