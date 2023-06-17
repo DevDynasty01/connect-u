@@ -78,7 +78,6 @@ export const NewTaskForm = () => {
                 <td>Assign to</td>
                 
                 <td>
-    
                 <select value={selectedID} onChange={(e) => setSelectedID(e.target.value)}>
                     <option>Select employee</option>
                      {employees.map((value) => (
