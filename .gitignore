@@ -21,6 +21,13 @@
 # pool
 /server/pool.js
 
+#PromisePool
+/server/PromisePool.js
+
+# Firebase Config
+/src/firebase/firebaseConfig.js
+serviceAccountKey.json
+
 # misc
 .DS_Store
 .env.local

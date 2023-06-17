@@ -11,13 +11,13 @@ export const HomePage = () => {
 
 	const newUser = () => {
 		console.log(
-			'User not in the system / enter organization to verify info  (depending of time available)'
+			'User not in the system yet/ enter organization to verify info'
 		);
+		navigate('/new-user');
 	};
 
 	return (
 		<div className='Home-page'>
-			<h1>Hello!</h1>
 			<h2> What do you want to do?</h2>
 			<button onClick={login}> Log in to your account</button>
 			<br />
