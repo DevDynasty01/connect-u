@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#PromisePool
+/server/PromisePool.js
+
 # testing
 /coverage
 
