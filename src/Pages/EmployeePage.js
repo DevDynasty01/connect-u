@@ -5,6 +5,7 @@ import {
     FaUserAlt,
     FaRegChartBar,
     FaCommentAlt,
+	FaSignOutAlt
 }from "react-icons/fa";
 import '../Style/TestPage.css'
 
@@ -31,6 +32,11 @@ export const EmployeePage = () => {
             name:"Chat with your team",
             icon:<FaCommentAlt/>
         },
+		{
+            path:"/",
+            name:"Log out",
+            icon:<FaSignOutAlt/>
+        }
        
 
 ]
