@@ -8,7 +8,7 @@ import {
 }from "react-icons/fa";
 import '../Style/TestPage.css'
 
-export const TestPage = () => {
+export const TestNavBar = () => {
 
     const menuItem=[
         {

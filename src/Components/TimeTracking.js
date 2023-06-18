@@ -29,10 +29,6 @@ export const TimeTracking = () => {
     
   }
 
-  
-
-  
-  
   return (
     <div>
       <button onClick={startTime}>Start of Day 🌞</button>

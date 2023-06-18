@@ -12,8 +12,10 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { Example } from './Components/Example'
 import { EmployeeTask } from './Components/EmployeeTask';
 import { TimeTracking } from './Components/TimeTracking';
-import { TestPage } from './Pages/TestPage'
-import { Construction } from './Pages/Construction'
+import { ExPageForManager } from './Pages/ExPageForManager';
+import { TestNavBar} from './Pages/TestNavBar'
+import { ManagerRibbon } from './Components/ManagerRibbon';
+
 // Create a new instance of QueryClient
 const queryClient = new QueryClient();
 
@@ -24,7 +26,9 @@ function App() {
     // Wrap your application with QueryClientProvider and provide the queryClient instance
     <QueryClientProvider client={queryClient}>
       <div className='App'>
-        <BrowserRouter>
+        <BrowserRouter >
+        {/* <ManagerRibbon />
+        <TestNavBar /> */}
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginForm />} />
@@ -36,8 +40,8 @@ function App() {
             <Route path='/manager-dashboard' element={<Example />} />
             <Route path='/newtask' element={<NewTaskForm />} />
             <Route path='/clock'  element={<TimeTracking />} />
-            <Route path='/test-page' element={<TestPage />}/>
-            <Route path='/under-construction' element={<Construction />}/>
+            <Route path='/1' element={<ExPageForManager />} />
+            
           </Routes>
         </BrowserRouter>
       </div>

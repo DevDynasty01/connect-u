@@ -67,6 +67,8 @@ export const SignUpForm = () => {
 				<h3>Registration</h3>
 				</div>
 				</div>
+				
+			<form className='signup-form'>
 
 			<label>Full Name</label>
 			<input
@@ -94,7 +96,7 @@ export const SignUpForm = () => {
 				}}
 			/>
 
-			<form className='signup-form'>
+			
 			
 			<label>Password</label>
 			<input

@@ -75,8 +75,12 @@ app.get('/employees/:guid', cors(corsOptions), async(req, res)=>{
 	body ? res.send(body) : res.status(404).send({ message: 'User Not Found.' });
 })
 
+app.put('/statusUpdate', cors(corsOptions), async(req, res) =>{
+  const status = req.body; 
+  const [update] = await pool.execute('UPDATE tasks SET status =?', [status])
+  update ? res.send(update[0]) : res.status(404).send({message: 'unable to update car.'});
 
-
+})
 
 app.listen(PORT, () => {
   console.log(`Express web API running on port ${PORT}.`);
