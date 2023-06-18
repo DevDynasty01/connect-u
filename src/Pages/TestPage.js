@@ -8,7 +8,7 @@ import {
 }from "react-icons/fa";
 import '../Style/TestPage.css'
 
-export const EmployeePage = () => {
+export const TestPage = () => {
 
     const menuItem=[
         {
@@ -59,4 +59,3 @@ export const EmployeePage = () => {
         </div>
   )
 }
-

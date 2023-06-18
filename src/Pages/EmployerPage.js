@@ -16,7 +16,7 @@ export const EmployerPage = () => {
 
   const TaskAssignment = () => {
     console.log('You are logged out');
-    navigate('/Example')
+    navigate('/manager-dashboard')
 
 }
 
