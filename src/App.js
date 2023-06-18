@@ -32,7 +32,7 @@ function App() {
             <Route path='/employee-page' element={<EmployeePage />} />
             <Route path='/employer-dashboard' element={<EmployerDashboard />} />
 			      <Route path='/employee-task' element={<EmployeeTask/>}/>
-            <Route path='/Example' element={<Example />} />
+            <Route path='/manager-dashboard' element={<Example />} />
             <Route path='/newtask' element={<NewTaskForm />} />
             <Route path='/window' element={<Window />}/>
             <Route path='/clock'  element={<TimeTracking />} />
