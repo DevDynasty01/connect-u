@@ -54,6 +54,7 @@ export const LoginForm = () => {
 	};
 
 	return (
+		<body id='login'>
 		<div className='login-page'>
 			<div className='form'>
 				<div className='login-text'>
@@ -94,6 +95,8 @@ export const LoginForm = () => {
 			<br />
 			<button onClick={logout}> Log Out </button> */}
 		
-		</div>
+		    </div>
+		</body>
+		
 	);
 };

@@ -60,53 +60,61 @@ export const SignUpForm = () => {
 
 
 	return (
-		<>
-			<h1>Sign Up</h1>
+		<div className='signup-page'>
+			<div classname='form-signup'>
+				<div className ='signup-text'>
+				<div className='signup-header'>
+				<h3>Registration</h3>
+				</div>
+				</div>
 
 			<label>Full Name</label>
 			<input
-				placeholder='Your Name...'
+				placeholder='👤 Your Name'
 				type='text'
 				onChange={(event) => {
 					setRegisteredName(event.target.value);
 				}}
 			/>
-			<br />
+			
 			<label>Username</label>
 			<input
-				placeholder='Your Username...'
+				placeholder='👥 Your Username'
 				type='text'
 				onChange={(event) => {
 					setRegisteredUserName(event.target.value);
 				}}
 			/>
-			<br />
+		
 			<label>Email</label>
 			<input
-				placeholder='Email...'
+				placeholder=' 📧 Email'
 				onChange={(event) => {
 					setRegisterEmail(event.target.value);
 				}}
 			/>
-			<br />
+
+			<form className='signup-form'>
+			
 			<label>Password</label>
 			<input
-				placeholder='Password...'
+				placeholder='🔒 Password'
 				type='password'
 				onChange={(event) => {
 					setRegisterPassword(event.target.value);
 				}}
 			/>
-			<br />
+			
 			<label>Position</label>
 			<input
-				placeholder='Your Position...'
+				placeholder=' ❍ Your Position'
 				type='text'
 				onChange={(event)=>{
 					setRegisteredPosition(event.target.value)
 				}}
 			/>
 			<label>Role</label>
+
 			<select
 				name='role'
 				onChange={(event) => {
@@ -122,15 +130,17 @@ export const SignUpForm = () => {
 					Manager
 				</option>
 			</select>
-			<br />
-			<button onClick={register}>Create User!</button>
+			
+			<button onClick={register}>Complete registration</button>
+			</form>
+			</div>
 
-			<h4> User Logged In: </h4>
+			{/* <h4> User Logged In: </h4>
 			{user?.email}
 			<p>User ID: </p>
 			{user?.uid}
 			<br />
-			<button onClick={logout}> Sign Out </button>
-		</>
+			<button onClick={logout}> Sign Out </button> */}
+		</div>
 	);
 };

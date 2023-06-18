@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
+import { NewTaskForm } from './NewTaskForm'
 import "../Style/Example.css";
 
 export const Example = () => {
@@ -27,11 +30,20 @@ export const Example = () => {
   }, []);
 
   return (
+    <body id='manager-body'>
     <div className="body-page">
 
       
       <div className="manager-dashboard">
-       <h1>Your dashboard</h1>
+      <div className='button-container'>
+         
+         <h1>Your dashboard</h1>
+           <Popup trigger=
+                {<button className="send-task"> Assign new task </button>}
+                position="right center">
+                    < NewTaskForm />
+            </Popup>
+        </div>
         <table className="manager-table">
           <thead>
             <tr>
@@ -59,5 +71,6 @@ export const Example = () => {
         <button onClick={logout}>Back to your home page</button>
       </div>
     </div>
+    </body>
   );
 };

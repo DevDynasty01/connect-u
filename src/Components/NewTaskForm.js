@@ -52,6 +52,8 @@ export const NewTaskForm = () => {
             console.log(response.status, response.data);
     
         })
+
+        alert('Task sent succesfully! 🎉🎉🎉')
     }
 
     const pickDate = () => {

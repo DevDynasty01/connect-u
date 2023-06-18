@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../Style/EmployeeTask.css'
 
 
 export const EmployeeTask = () => {
@@ -37,10 +38,10 @@ export const EmployeeTask = () => {
   };
 
   return (
-    <div className="Table">
-      Employee Dashboard
-      <br />
-      <table>
+    <div className="page">
+      <div className='emp-dashboard'>
+      <h1>Your dashboard</h1>
+      <table className='emp-table'>
         <thead>
           <tr>
             <th>Task</th>
@@ -56,11 +57,11 @@ export const EmployeeTask = () => {
               <td>{item.date_assigned}</td>
               <td>{item.due_date}</td>
               <td>
-                <select
+                <select className='status-select'
                   value={item.status}
                   onChange={(e) => handleStatusChange(item.id, e.target.value)}
                 >
-                  <option value="Pending">Pending</option>
+                  <option value="Pending">Select your status</option>
                   <option value="In Progress">In Progress</option>
                   <option value="Completed">Completed</option>
                 </select>
@@ -70,6 +71,7 @@ export const EmployeeTask = () => {
         </tbody>
       </table>
       <button onClick={logout}>Log out</button>
+      </div>
     </div>
   );
 };
