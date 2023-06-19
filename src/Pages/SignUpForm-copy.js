@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import '../Styles/SignUpForm.css';
+
 import {
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
-
 import { auth } from '../firebase/firebaseConfig';
-import '../Style/SignUpForm.css';
 
 export const SignUpForm = () => {
 	const navigate = useNavigate();
@@ -39,6 +39,7 @@ export const SignUpForm = () => {
 				registerPassword
 			).then((userCredential) => {
 				const url = `http://localhost:8080/employees`;
+
 				axios.post(url, {
 					email: userCredential.user.email,
 					guid: userCredential.user.uid,
@@ -58,8 +59,6 @@ export const SignUpForm = () => {
 	};
 	const logout = async () => {
 		await signOut(auth);
-		localStorage.clear();
-		console.log('User logged out');
 	};
 
 	return (
@@ -67,13 +66,14 @@ export const SignUpForm = () => {
 			<div className='signup-page'>
 				<div classname='form-signup'>
 					<div className='signup-text'>
+						<h1>Sign Up</h1>
 						<div className='signup-header'>
-							<div className='signup-form input'>
-							</div>
+							<div className='signup-form input'></div>
 						</div>
 						<div className='form-signup button '>
 							<form className='signup-form'>
-								<h3 className>Registration</h3>
+								<h3 className='register'>Registration</h3>
+
 								<label>Full Name</label>
 
 								<input
@@ -86,7 +86,6 @@ export const SignUpForm = () => {
 
 								<form className='username-form'></form>
 								<label>Username</label>
-
 								<input
 									placeholder='👥 Your Username'
 									type='text'
@@ -96,7 +95,6 @@ export const SignUpForm = () => {
 								/>
 
 								<label>Email</label>
-
 								<input
 									placeholder=' 📧 Email'
 									onChange={(event) => {
@@ -105,7 +103,6 @@ export const SignUpForm = () => {
 								/>
 
 								<label>Password</label>
-
 								<input
 									placeholder='🔒 Password'
 									type='password'
@@ -115,7 +112,6 @@ export const SignUpForm = () => {
 								/>
 
 								<label>Position</label>
-
 								<input
 									placeholder=' ❍ Your Position'
 									type='text'
@@ -127,7 +123,7 @@ export const SignUpForm = () => {
 								<label>Role</label>
 								<br />
 								<select
-									className='Bigger'
+									className='bigger'
 									name='role'
 									onChange={(event) => {
 										setRegisteredRole(event.target.value);
@@ -144,14 +140,9 @@ export const SignUpForm = () => {
 								</select>
 								<br />
 								<br />
-								<button onClick={register}>Complete registration</button>
-								<br />
+
+								<button onClick={register}>Create User</button>
 								<button onClick={logout}> Sign Out </button>
-								{/* <h4> User Logged In: </h4>
-			{user?.email}
-			<p>User ID: </p>
-			{user?.uid}
-			<br /> */}
 							</form>
 						</div>
 					</div>

@@ -6,7 +6,7 @@ import 'reactjs-popup/dist/index.css';
 import { NewTaskForm } from './NewTaskForm'
 import "../Style/Example.css";
 
-export const Example = () => {
+export const AllTasks = () => {
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();
@@ -18,8 +18,13 @@ export const Example = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD:src/Components/AllTasks.js
+        const response = (await axios.get("http://localhost:8080/tasks/"))
+          .data;
+=======
         const response = (await axios.get("http://localhost:8080/tasks/")).data;
 
+>>>>>>> dev:src/Components/Example.js
         setData(response);
       } catch (error) {
         console.log(error);

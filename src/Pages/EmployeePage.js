@@ -1,68 +1,40 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import {
-    FaTh,
-    FaUserAlt,
-    FaRegChartBar,
-    FaCommentAlt,
-	FaSignOutAlt
-}from "react-icons/fa";
-import '../Style/TestPage.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig';
+
 
 export const EmployeePage = () => {
+	  const navigate = useNavigate();
+      
+      const logOut = async () => {
+		await signOut(auth);
+		navigate('/');
+		localStorage.clear();
+		console.log('User logged out');
+	
+	  const goToEmployeeTask = () => {
+	    navigate('/employee-task');
+	  };
 
-    const menuItem=[
-        {
-            path:"/employee-task",
-            name:"Dashboard",
-            icon:<FaTh/>
-        },
-        {
-            path:"/under-construction",
-            name:"About",
-            icon:<FaUserAlt/>
-        },
-        {
-            path:"/clock",
-            name:"Time tracking",
-            icon:<FaRegChartBar/>
-        },
-        {
-            path:"/under-construction",
-            name:"Chat with your team",
-            icon:<FaCommentAlt/>
-        },
-		{
-            path:"/",
-            name:"Log out",
-            icon:<FaSignOutAlt/>
-        }
-       
+	  const openChatBox=()=>{
+		navigate('/employee-task');
+	  }
 
-]
-    
-
-  return (
-    <div className="container">
-           <div className="sidebar">
-               <div className="top_section">
-                   <h1 className="logo">
-                    <img alt= 'Company Logo ConnectU'className='logo' src='connectU-logo-removebg-preview.png'/>
-                    </h1>
-                   <div className="bars">
-    
-                   </div>
-               </div>
-               {
-                   menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className="link" activeclassName="active">
-                           <div className="icon">{item.icon}</div>
-                           <div className="link_text">{item.name}</div>
-                       </NavLink>
-                   ))
-               }
-           </div>
-        </div>
-  )
-}
-
+	return (
+		<div>
+			<h1>Welcome Valued Team Member!</h1>
+			<p>Ada Lovelace</p>
+			<img
+				src='https://pbs.twimg.com/profile_images/626331479061233664/9BNQV22V_400x400.jpg'
+				alt='Profile Pic'
+			></img>
+			<div>
+				<p>Task Manager</p>
+				<ol>
+						<button onClick={goToEmployeeTask}>View Tasks</button> Dashboard{' '}
+				</ol>
+			</div>
+		</div>
+	);
+};

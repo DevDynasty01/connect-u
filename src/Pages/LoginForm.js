@@ -27,30 +27,31 @@ export const LoginForm = () => {
 
 	const login = async () => {
 		try {
-			await signInWithEmailAndPassword(
-				auth,
-				loginEmail,
-				loginPassword
-			).then((userCredential) => {
-				//Getting user info from mysql according to Firebase returned data
-				axios
-					.get(`http://localhost:8080/employees/` + userCredential.user.uid)
-					.then((userData) => {
-						setUserInfo(userData);
-						console.log('role:', userData);
-						if (userData.data.role === 'Manager') {
-							navigate('/manager-page');
-						} else {
-							navigate('/employee-page');
-						}
-					});	
-			});
+			await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(
+				(userCredential) => {
+					//Getting user info from mysql according to Firebase returned data
+					axios
+						.get(`http://localhost:8080/employees/` + userCredential.user.uid)
+						.then((userData) => {
+							// setUserInfo(userData);
+							localStorage.setItem('guid', userData.data.guid);
+							localStorage.setItem('name', userData.data.name);
+							if (userData.data.role === 'Manager') {
+								navigate('/manager-page');
+							} else {
+								navigate('/employee-page');
+							}
+						});
+				}
+			);
 		} catch (error) {
 			console.log(error.message);
 		}
 	};
 	const logout = async () => {
 		await signOut(auth);
+		localStorage.clear();
+		console.log('User logged out');
 	};
 
 	return (
