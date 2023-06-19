@@ -19,11 +19,11 @@ export const ManagerRibbon = () => {
   
   return (
     <body className='body'>
-    <div className='main-page'>
+    <div className='container-page'>
       <TestNavBar />
 
       <section className="main">
-        <div className="main-top">
+        <div className="top">
           {
         employees.map((p) => {
           if(p.role === 'Manager') {
@@ -33,6 +33,7 @@ export const ManagerRibbon = () => {
 
           </div>
 
+          <h2>My team</h2>
 
           {
         employees.map((p) => {

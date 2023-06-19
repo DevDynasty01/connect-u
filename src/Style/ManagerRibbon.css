@@ -6,11 +6,9 @@
 
 
 
-.main-page {
+.container-page {
     display:flex;
-    background: #dfe9f5;
-
-
+    background: rgb(223, 233, 245);
 }
 
 .profile-pic-manager{
@@ -29,16 +27,16 @@
 }
 
 .main{
-    position: relative;
+    /* position: relative; */
     padding: 20px;
     width: 100%;
 }
 
-.main-top{
+.top{
     display: flex;
     width: 100%;
   }
-.main-top img{
+.top img{
     position: absolute;
     right: 0;
     color: rgb(110, 109, 109);
@@ -48,6 +46,8 @@
 .employees{
     display: flex;
     margin-top: 20px;
+    cursor: pointer;
+    justify-content:center;
   }
 
 .employees .profile{
@@ -71,6 +71,5 @@
   }
 
 .employees .profile img{
-    font-size: 22px;
     padding: 10px;
   }
