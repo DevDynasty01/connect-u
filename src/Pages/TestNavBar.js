@@ -3,17 +3,16 @@ import { NavLink } from 'react-router-dom'
 import {
     FaTh,
     FaUserAlt,
-    FaRegChartBar,
     FaCommentAlt,
 	FaSignOutAlt
 }from "react-icons/fa";
 import '../Style/TestPage.css'
 
-export const EmployeePage = () => {
+export const TestNavBar = () => {
 
     const menuItem=[
         {
-            path:"/employee-task",
+            path:"/manager-dashboard",
             name:"Dashboard",
             icon:<FaTh/>
         },
@@ -22,11 +21,7 @@ export const EmployeePage = () => {
             name:"About",
             icon:<FaUserAlt/>
         },
-        {
-            path:"/clock",
-            name:"Time tracking",
-            icon:<FaRegChartBar/>
-        },
+       
         {
             path:"/under-construction",
             name:"Chat with your team",
@@ -65,4 +60,3 @@ export const EmployeePage = () => {
         </div>
   )
 }
-

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
+import { NewTaskForm } from './NewTaskForm'
+import "../Style/Example.css";
 
 export const Example = () => {
   const [data, setData] = useState([]);
@@ -15,13 +18,9 @@ export const Example = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = (await axios.get("http://localhost:8080/tasks/"))
-          .data;
+        const response = (await axios.get("http://localhost:8080/tasks/")).data;
 
-      
         setData(response);
-
-        
       } catch (error) {
         console.log(error);
       }
@@ -31,46 +30,47 @@ export const Example = () => {
   }, []);
 
   return (
-    <>
-      <div className="Table">
-        Employer Dashboard
-        <table>
+    <body id='manager-body'>
+    <div className="body-page">
+
+      
+      <div className="manager-dashboard">
+      <div className='button-container'>
+         
+         <h1>Your dashboard</h1>
+           <Popup trigger=
+                {<button className="send-task"> Assign new task </button>}
+                position="right center">
+                    < NewTaskForm />
+            </Popup>
+        </div>
+        <table className="manager-table">
           <thead>
             <tr>
-              <th> Task Name</th>
-
-              <th> Status</th>
-
-              <th>Date Assigned</th>
-
+              <th>id</th>
+              <th>Responsable</th>
+              <th>Task</th>
+              <th>Assigned on</th>
               <th>Due Date</th>
-
-              <th>Assigned From</th>
-
-              <th>Assigned To</th>
+              <th> Status</th>
             </tr>
           </thead>
-
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.task}</td>
-                <td>{item.status}</td>
-                <td>{item.due_date}</td>
-                <td>{item.date_assigned}</td>
-                <td>{item.assigned_from}</td>
+                <td>{item.id}</td>
                 <td>{item.assigned_to}</td>
+                <td>{item.task}</td>
+                <td>{item.date_assigned}</td>
+                <td>{item.due_date}</td>
+                <td>{item.status}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <button onClick={logout}>Back to your home page</button>
       </div>
-      <br />
-      <br />
-      <br />
-      <div>
-        <button onClick={logout}> Log out</button>
-      </div>
-    </>
+    </div>
+    </body>
   );
 };

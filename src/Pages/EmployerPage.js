@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
-import './EmployerStyle.css'
+import '../Style/EmployerPage.css'
 
 
 
-export const EmployerTask = () => {
+export const EmployerPage = () => {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -16,20 +16,20 @@ export const EmployerTask = () => {
 
   const TaskAssignment = () => {
     console.log('You are logged out');
-    navigate('/Example')
+    navigate('/manager-dashboard')
 
 }
 
 
   return (
     <>
-      <div className="Dashboard">Welcome to Employer Dashboard</div>
-      <br />
+      <h1>Welcome to your page</h1>
+      
       <div className=" project">
-        Project Management:
-        <br />
-        <button onClick= {TaskAssignment}>Task assignments </button>
-        <button> Task Assigened </button>
+        My projects
+        
+        <button onClick= {TaskAssignment}>Task managment </button>
+        <button> Assign new task </button>
 
       </div>
       <br />

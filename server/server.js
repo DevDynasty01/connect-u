@@ -1,5 +1,9 @@
 const express = require("express");
+<<<<<<< HEAD
+const pool = require("./PromisePool").pool;
+=======
 const pool = require("./pool").pool;
+>>>>>>> 7fd28ba121006ea474a2bdd9385599ec9169d04c
 const cors = require("cors");
 
 
@@ -75,8 +79,12 @@ app.get('/employees/:guid', cors(corsOptions), async(req, res)=>{
 	body ? res.send(body) : res.status(404).send({ message: 'User Not Found.' });
 })
 
+app.put('/statusUpdate', cors(corsOptions), async(req, res) =>{
+  const status = req.body; 
+  const [update] = await pool.execute('UPDATE tasks SET status =?', [status])
+  update ? res.send(update[0]) : res.status(404).send({message: 'unable to update car.'});
 
-
+})
 
 app.listen(PORT, () => {
   console.log(`Express web API running on port ${PORT}.`);
