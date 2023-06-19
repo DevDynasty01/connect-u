@@ -1,53 +1,48 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom'
-import './EmployerStyle.css'
-
-
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/firebaseConfig';
 
 export const EmployerTask = () => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const logout = () => {
+	const logOut = async () => {
+		await signOut(auth);
+		navigate('/');
+		localStorage.clear();
+		console.log('User logged out');
+	};
 
-      console.log('You are logged out');
-      navigate('/')
-  }
+	const seeTasks = () => {
+		navigate('/all-tasks');
+	};
 
+	const userName = localStorage.getItem('name');
+	return (
+		<>
+			<h1>Welcome {userName}</h1>
+			<h2>Manager Dashboard</h2>
+			<img
+				src='https://pbs.twimg.com/profile_images/626331479061233664/9BNQV22V_400x400.jpg'
+				alt='Profile Pic'
+			></img>
+			<br />
+			<div className=' project'>
+				<br />
+				<button onClick={seeTasks}>See tasks</button>{' '}
+				<button>Assign Task</button>
+			</div>
 
-  const TaskAssignment = () => {
-    console.log('You are logged out');
-    navigate('/Example')
-
-}
-
-
-  return (
-    <>
-      <div className="Dashboard">Welcome to Employer Dashboard</div>
-      <br />
-      <div className=" project">
-        Project Management:
-        <br />
-        <button onClick= {TaskAssignment}>Task assignments </button>
-        <button> Task Assigened </button>
-
-      </div>
-      <br />
-      <div className="ProjectM">
-    
-      </div>
-      <br />
-      <div className="chat">
-        Chat
-        <br />
-        <button>Team chat and messaging</button>
-      </div>
-      <br />
-      <div className="Logout">
-      <button onClick= {logout}> Log out</button>
-      </div>
-      
-    </>
-  );
+			<br />
+			<div className='chat'>
+				Chat
+				<br />
+				<button>Team chat and messaging</button>
+			</div>
+			<br />
+			<div className='Logout'>
+				<button onClick={logOut}> Log out</button>
+			</div>
+		</>
+	);
 };
-

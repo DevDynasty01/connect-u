@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Example = () => {
+export const AllTasks = () => {
   const [data, setData] = useState([]);
 
   const navigate = useNavigate();
@@ -17,11 +17,7 @@ export const Example = () => {
       try {
         const response = (await axios.get("http://localhost:8080/tasks/"))
           .data;
-
-      
         setData(response);
-
-        
       } catch (error) {
         console.log(error);
       }
