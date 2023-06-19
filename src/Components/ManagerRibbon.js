@@ -5,7 +5,7 @@ import '../Style/ManagerRibbon.css'
 
 export const ManagerRibbon = () => {
   let [employees, setEmployees] = useState([]);
-  let [manager, setManager] = useState([]);
+  
 
   useEffect(() => {
     const fetch = async () => {
@@ -18,30 +18,39 @@ export const ManagerRibbon = () => {
   
   
   return (
+    <body className='body'>
     <div className='main-page'>
       <TestNavBar />
-      <section class="main">
 
-        <div class="main-top">
-          <h1>My profile</h1>
+      <section className="main">
+        <div className="main-top">
           {
         employees.map((p) => {
           if(p.role === 'Manager') {
-              return <h1> {p.name} <img alt= 'profile'className='profile-pic' src={p.profile_pic}/></h1>
-          } else{ return (
-            <div class="profile">
-                <img alt= 'profile-pictue'className='profile-pic' src={p.profile_pic}/>
+              return <h1> {p.name} <img alt= 'profile'className='profile-pic-manager' src={p.profile_pic}/></h1>
+              
+          } })}
+
+          </div>
+
+
+          {
+        employees.map((p) => {
+          if(p.role === 'Employee') {
+          return (
+          <div className='employees'>
+            <div className="profile">
+                <img alt= 'profile' className='profile-pic' src={p.profile_pic}/>
                   <h4>{p.name}</h4>
                   <h3>{p.position}</h3>
                   <p>{p.email}</p>
             </div>
-          )
-          }
-          
-                  
-          })}
-        </div>
+          </div>
+          ) } })}
+        
+        
       </section>
     </div>
+    </body>
   )
 }
