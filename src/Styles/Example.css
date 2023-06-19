@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+*{
+    margin: 0; 
+    padding: 0; 
+
+    /* box-sizing: border-box; */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* #manager-body{
+    background: white !important;
+} */
+
+.manager-dashboard {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: 'Roboto', sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: .8rem;
+}
+
+.manager-dashboard h1{
+    color: #47317e;
+}
+
+.manager-table {
+    width: 95%;
+    max-height: calc(89% - 1.6rem);
+    background-color: rgba(206, 208, 246, 0.733);
+
+    margin: .8rem auto;
+    border-radius: .6rem;
+
+    overflow: auto;
+    overflow: overlay;
+}
+
+
+
+.manager-dashboard button{
+    background: #5638a0;
+    color: rgb(209, 192, 240);
+    width: 150px;
+    height: 25px;
+    border: none;
+    border-radius: 40px;
+}
+
+
+.manager-dashboard button:hover{
+    background: #634e94;
+}
+
+.manager-dashboard{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.manager-table thead tr {
+    background-color: #5638a0;
+    color: rgb(209, 192, 240);
+    text-align: left;
+}
+
+.manager-table th,
+.manager-table td {
+    padding: 12px 15px;
+}
+
+.manager-table tbody tr {
+    border-bottom: thin solid rgb(192, 197, 231);
+}
+
+.manager-table tbody tr:nth-of-type(even):hover{
+    background-color: rgb(95, 73, 135);
+    color: rgb(192, 197, 231)
+
+}
+
+.manager-table tbody tr:hover{
+    background-color: rgb(95, 73, 135);
+    color: rgb(192, 197, 231)
+
+}
+
+.manager-table tbody tr:nth-of-type(even) {
+    background-color: rgba(206, 208, 246, 0.733);
+}
+
+.button-container{
+display:flex;
+justify-content:space-between;
+align-items: center;
+}
+    
+
+
+

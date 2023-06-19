@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import React, { useState, useRef, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios';
 import '../Styles/NewTaskForm.css';
+=======
+import React, {useState, useRef, useEffect} from 'react'
+import Calendar from 'react-calendar'
+import axios from 'axios'; 
+import 'react-calendar/dist/Calendar.css'
+import '../Style/NewTaskForm.css'
+>>>>>>> dev
 
 export const NewTaskForm = () => {
 	const [selectedDate, setSelectedDate] = useState(new Date());
@@ -92,8 +100,62 @@ export const NewTaskForm = () => {
 					</tr>
 				</tbody>
 
+<<<<<<< HEAD
 				<button onClick={addNewTask}>Send Task</button>
 			</table>
 		</div>
 	);
 };
+=======
+        axios.post(url,userData).then((response) => {
+            console.log(response.status, response.data);
+    
+        })
+
+        alert('Task sent succesfully! 🎉🎉🎉')
+    }
+
+    const pickDate = () => {
+        setShowCalendar(!showCalendar);
+    }
+
+  return (
+    <div className='taskForm'>
+        <table className='newTaskTable-container'>
+            <tbody>
+            <tr>
+                <td>Task Name</td>
+                <td><input className='newTaskForm' ref={refTask}type = 'text' placeholder='Write your task here'></input></td>
+            </tr>
+            <tr>
+                <td>Due Date</td>
+                <td> <button className='taskButton' onClick={pickDate}>{showCalendar? "Hide Calendar":"Show Calendar"}</button>
+                {showCalendar && <Calendar onChange={setSelectedDate} value={selectedDate}/>}
+                </td>
+                
+                
+            </tr>
+            <tr>
+                <td>Assign to</td>
+                
+                <td>
+                <select value={selectedID} onChange={(e) => setSelectedID(e.target.value)}>
+                    <option>Select employee</option>
+                     {employees.map((value) => (
+                       <option value={value.guid} key={value.row_key}> 
+                          {value.name}
+                       </option>
+                     ))}
+                </select>
+                </td>
+            </tr>
+            </tbody>
+
+            <button className='submitButton' onClick={addNewTask}>Send Task</button>
+
+        </table>
+
+    </div>
+  )
+}
+>>>>>>> dev
