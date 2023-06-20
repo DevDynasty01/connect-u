@@ -1,38 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-<<<<<<< HEAD:src/Styles/SignUpForm.css
-body{
-	background-image: linear-gradient(45deg,#1c1a72,#4031ea);
-	background-attachment: fixed;
+body {
+	background-color: #dfe9f5;	
+	font-family: 'Roboto', sans-serif;
 }
-
-/* .page{
-  background-image: linear-gradient(45deg,#1c1a72,#4031ea);
-  background-attachment: fixed;
-  font-family: "Roboto", sans-serif;
-}  */
-
-/* .page {
-	background-color: #4031ea;
-	/* padding: 100px; */
-/* } */
-
+.signup-header {
+	background-color: #fff;
+	height: 45px;
+}
 
 .signup-page {
 	width: 360px;
-	padding: 8% 0 0;
+	padding: 5% 0 0;
 	margin: auto;
-}
-
-.form-signup {
-	position: relative;
-	z-index: 1;
-	background: #ffffff;
-	max-width: 360px;
-	margin: 0 auto 100px;
-	padding: 45px;
-	text-align: center;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .signup-page .form .signup-text {
@@ -40,14 +20,20 @@ body{
 	margin-bottom: 26px;
 }
 
-.signup-header {
-	background-color: #fff;
-	color: #1c1a72;
-	height: 45px;
+.signup-form {
+	position: relative;
+	border-radius: 5px;
+	z-index: 1;
+	background: #fff;
+	max-width: 360px;
+	margin: 0 auto 100px;
+	padding: 45px;
+	text-align: center;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .signup-form input {
-	font-family: 'Roboto', sans-serif;
+	border-radius: 5px;
 	outline: 0;
 	background: #f2f2f2;
 	width: 100%;
@@ -58,11 +44,24 @@ body{
 	font-size: 14px;
 }
 
-.form-signup button {
-	font-family: 'Roboto', sans-serif;
+.signup-form select{
+	border-radius: 5px;
+	color: #57575a;
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	padding: 10px 10px 10px 10px;
+	margin: 0 0 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+
+.signup-form button {
+	border-radius: 5px;
 	text-transform: uppercase;
 	outline: 0;
-	background-image: linear-gradient(45deg, #1c1a72, #4031ea);
+	background-image: linear-gradient(45deg, #2f6690ff, #81c3d7ff);
 	width: 100%;
 	border: 0;
 	padding: 15px;
@@ -74,102 +73,5 @@ body{
 }
 
 
-.register {
-	font-size: x-large;
-	text-align: center;
-	color: #1c1a72;
-}
 
 
-.bigger {
-	width: 270px;
-	height: 40px;
-}
-=======
-/* #login{
-
-  background-image: linear-gradient(45deg,#1c1a72,#4031ea);
-  background-attachment: fixed;
-  font-family: "Roboto", sans-serif;
-  
-} */
-.signup-header{
-    background-color: #fff;
-    height: 45px;
-  }
-
-
-
-  .signup-page {
-    width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
-  }
-
-  .signup-page .form .signup-text{
-    margin-top: -31px;
-  margin-bottom: 26px;
-  }
-  .form-signup {
-    position: relative;
-    z-index: 1;
-    background: #FFFFFF;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  }
-
-  .signup-form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-
-  
-  .form-signup button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background-image: linear-gradient(45deg,#1c1a72,#4031ea);
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
-  }
-
-  /* .form a {
-    color: #260ce9;
-    text-decoration: none;
-  } */
-
-.register{
-
-font-size:x-large;
-text-align: center;
-}
-.page{
-
-
-background-color:purple;
-padding: 100px;
-
-}
-.Bigger{
-  width: 270px;
-  height: 40px
-  
-}
-  
->>>>>>> dev:src/Style/SignUpForm.css

@@ -6,14 +6,14 @@ import {
     FaCommentAlt,
 	FaSignOutAlt
 }from "react-icons/fa";
-import '../Style/TestPage.css'
+import '../Styles/NavBar.css'
 
-export const TestNavBar = () => {
+export const ManagerNavBar = () => {
 
     const menuItem=[
         {
-            path:"/manager-dashboard",
-            name:"Dashboard",
+            path:"/all-tasks",
+            name:"Tasks",
             icon:<FaTh/>
         },
         {

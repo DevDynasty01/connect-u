@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import {
 	signInWithEmailAndPassword,
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
-import '../Style/LoginForm.css'
+
+import '../Styles/LoginForm.css';
 
 export const LoginForm = () => {
 	const navigate = useNavigate();
@@ -37,9 +39,9 @@ export const LoginForm = () => {
 							localStorage.setItem('guid', userData.data.guid);
 							localStorage.setItem('name', userData.data.name);
 							if (userData.data.role === 'Manager') {
-								navigate('/manager-page');
+								navigate('/manager-dashboard');
 							} else {
-								navigate('/employee-page');
+								navigate('/employee-dashboard');
 							}
 						});
 				}
@@ -55,49 +57,49 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<body id='login'>
 		<div className='login-page'>
 			<div className='form'>
 				<div className='login-text'>
-				<div className='login-header'>
-				   <h3> Login </h3>
-				   <p>Enter you credentials to login</p>
+					<div className='login-header'>
+						<h3>Login</h3>
+						<p>Enter you credentials to login</p>
+					</div>
 				</div>
+
+				<div className='login-form'>
+					<input
+						placeholder='email'
+						onChange={(event) => {
+							setLoginEmail(event.target.value);
+						}}
+					/>
+
+					<input
+						placeholder='password'
+						type='password'
+						onChange={(event) => {
+							setLoginPassword(event.target.value);
+						}}
+					/>
+					<div>
+						<button onClick={login}>LOGIN</button>
+					</div>
+					<br />
+					<p>
+						Don't have an account?
+						<br />
+						<a href='http://localhost:3000/new-user'> Create one here!</a>
+					</p>
 				</div>
-
-				<form className='login-form'>
-
-				<input
-					placeholder='email'
-					onChange={(event) => {
-						setLoginEmail(event.target.value);
-					}}
-				/>
-				
-				<input
-					placeholder='password'
-					type='password'
-					onChange={(event) => {
-						setLoginPassword(event.target.value);
-					}}
-				/>
-				
-
-				<button onClick={login}>LOGIN</button> 
-				<p className='not-registered'>Don't have an account 
-				<a href="http://localhost:3000/new-user"> Create one here!</a></p>
-				</form>
 			</div>
+		</div>
+	);
+};
 
-			{/* <h4> User Logged In: </h4>
+
+	/* <h4> User Logged In: </h4>
 			{user?.email}
 			<p>User ID: </p>
 			{user?.uid}
 			<br />
-			<button onClick={logout}> Log Out </button> */}
-		
-		    </div>
-		</body>
-		
-	);
-};
+			<button onClick={logout}> Log Out </button> */

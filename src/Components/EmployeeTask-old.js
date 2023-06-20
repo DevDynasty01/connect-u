@@ -1,8 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../Styles/EmployeeTask.css'
-
 
 
 export const EmployeeTask = () => {
@@ -60,14 +60,14 @@ export const EmployeeTask = () => {
 	//Back to Dashboard
 	const returnToDashboard = () => {
 		console.log('Going back to dashboard');
-		navigate('/employee-dashboard');
+		navigate('/employee-page');
 	};
 
 	return (
-		<div className='emp-dashboard'>
+		<div className='Table'>
 			<h1>{userName}'s Tasks</h1>
-			
-			<table className='emp-table'> 
+			<br />
+			<table>
 				<thead>
 					<tr>
 						<th>Task</th>
@@ -83,7 +83,7 @@ export const EmployeeTask = () => {
 							<td>{item.date_assigned}</td>
 							<td>{item.due_date}</td>
 							<td>
-								<select classname='status-select'
+								<select
 									onChange={(e) => handleStatusChange(item.id, e.target.value)}
 								>
 									<option>{item.status}</option>
@@ -96,7 +96,7 @@ export const EmployeeTask = () => {
 					))}
 				</tbody>
 			</table>
-			<button onClick={returnToDashboard}>Back you your home page</button>
+			<button onClick={returnToDashboard}>Go to Dashboard</button>
 		</div>
 	);
 

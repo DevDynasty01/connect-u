@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
-import '../Style/EmployerPage.css'
+import '../Styles/EmployerPage.css'
 
 
 
@@ -16,7 +16,7 @@ export const EmployerPage = () => {
 
   const TaskAssignment = () => {
     console.log('You are logged out');
-    navigate('/manager-dashboard')
+    navigate('/all-tasks');
 
 }
 

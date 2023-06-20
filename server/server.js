@@ -71,11 +71,11 @@ app.get('/employee/:guid/tasks', cors(corsOptions), async (req, res) => {
 // Adding user to sqldb
 app.post('/employees', cors(corsOptions), async (req, res) => {
 	//Destructuring req.body
-	const { guid, username, name, email, position, role } = req.body;
+	const { guid, username, name, email, position, role, profile_pic } = req.body;
 	//Query to insert car on table
 	await pool.query(
-		`INSERT INTO employees (guid, username, name, email, position, role) VALUES (?,?,?,?,?,?)`,
-		[guid, username, name, email, position, role]
+		`INSERT INTO employees (guid, username, name, email, position, role, profile_pic) VALUES (?,?,?,?,?,?,?)`,
+		[guid, username, name, email, position, role, profile_pic]
 	);
 
 	res.send('user Added');

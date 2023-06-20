@@ -9,7 +9,7 @@ import {
 } from 'firebase/auth';
 
 import { auth } from '../firebase/firebaseConfig';
-import '../Style/SignUpForm.css';
+import '../Styles/SignUpForm.css';
 
 export const SignUpForm = () => {
 	const navigate = useNavigate();
@@ -22,6 +22,7 @@ export const SignUpForm = () => {
 	const [registeredUserName, setRegisteredUserName] = useState('');
 	const [registeredRole, setRegisteredRole] = useState('');
 	const [registeredPosition, setRegisteredPosition] = useState('');
+	const [registeredPhoto, setRegisteredPhoto] = useState('');
 
 	const [user, setUser] = useState({});
 
@@ -32,6 +33,7 @@ export const SignUpForm = () => {
 	}, []);
 
 	const register = async () => {
+		console.log('register');
 		try {
 			const user = await createUserWithEmailAndPassword(
 				auth,
@@ -46,6 +48,7 @@ export const SignUpForm = () => {
 					username: registeredUserName,
 					role: registeredRole,
 					position: registeredPosition,
+					profile_pic: registeredPhoto,
 				});
 			});
 
@@ -56,107 +59,100 @@ export const SignUpForm = () => {
 			console.log(error.message);
 		}
 	};
-	const logout = async () => {
-		await signOut(auth);
-		localStorage.clear();
-		console.log('User logged out');
-	};
 
 	return (
-		<div className='page'>
-			<div className='signup-page'>
-				<div classname='form-signup'>
-					<div className='signup-text'>
-						<div className='signup-header'>
-							<div className='signup-form input'>
-							</div>
-						</div>
-						<div className='form-signup button '>
-							<form className='signup-form'>
-								<h3 className>Registration</h3>
-								<label>Full Name</label>
-
-								<input
-									placeholder='👤 Your Name'
-									type='text'
-									onChange={(event) => {
-										setRegisteredName(event.target.value);
-									}}
-								/>
-
-								<form className='username-form'></form>
-								<label>Username</label>
-
-								<input
-									placeholder='👥 Your Username'
-									type='text'
-									onChange={(event) => {
-										setRegisteredUserName(event.target.value);
-									}}
-								/>
-
-								<label>Email</label>
-
-								<input
-									placeholder=' 📧 Email'
-									onChange={(event) => {
-										setRegisterEmail(event.target.value);
-									}}
-								/>
-
-								<label>Password</label>
-
-								<input
-									placeholder='🔒 Password'
-									type='password'
-									onChange={(event) => {
-										setRegisterPassword(event.target.value);
-									}}
-								/>
-
-								<label>Position</label>
-
-								<input
-									placeholder=' ❍ Your Position'
-									type='text'
-									onChange={(event) => {
-										setRegisteredPosition(event.target.value);
-									}}
-								/>
-
-								<label>Role</label>
-								<br />
-								<select
-									className='Bigger'
-									name='role'
-									onChange={(event) => {
-										setRegisteredRole(event.target.value);
-									}}
-								>
-									{' '}
-									<option key='clear' value=''></option>
-									<option key='employee' value='Employee'>
-										Employee
-									</option>
-									<option key='manager' value='Manager'>
-										Manager
-									</option>
-								</select>
-								<br />
-								<br />
-								<button onClick={register}>Complete registration</button>
-								<br />
-								<button onClick={logout}> Sign Out </button>
-								{/* <h4> User Logged In: </h4>
-			{user?.email}
-			<p>User ID: </p>
-			{user?.uid}
-			<br /> */}
-							</form>
-						</div>
+		<div className='signup-page'>
+			<div className='signup-form'>
+				<div className='signup-text'>
+					<div className='signup-header'>
+						<h3>Registration</h3>
+						<p>Create your account here!</p>
+						<br />
 					</div>
+				</div>
+				<div className='login-form'>
+					<input
+						placeholder='your name'
+						type='text'
+						onChange={(event) => {
+							setRegisteredName(event.target.value);
+						}}
+					/>
+
+					<input
+						placeholder='your username'
+						type='text'
+						onChange={(event) => {
+							setRegisteredUserName(event.target.value);
+						}}
+					/>
+					<input
+						placeholder='noimage.png'
+						type='text'
+						onChange={(event) => {
+							setRegisteredPhoto(event.target.value);
+						}}
+					/>
+
+					<input
+						placeholder='email'
+						onChange={(event) => {
+							setRegisterEmail(event.target.value);
+						}}
+					/>
+
+					<input
+						placeholder='password'
+						type='password'
+						onChange={(event) => {
+							setRegisterPassword(event.target.value);
+						}}
+					/>
+
+					<input
+						placeholder=' your position'
+						type='text'
+						onChange={(event) => {
+							setRegisteredPosition(event.target.value);
+						}}
+					/>
+
+					<br />
+					<select
+						className='bigger'
+						name='role'
+						onChange={(event) => {
+							setRegisteredRole(event.target.value);
+						}}
+					>
+						{' '}
+						<option value='' disabled selected hidden>
+							choose your role
+						</option>
+						<option key='employee' value='Employee'>
+							Employee
+						</option>
+						<option key='manager' value='Manager'>
+							Manager
+						</option>
+					</select>
+					<br />
+					<div>
+						<button onClick={register}>Complete registration</button>
+					</div>
+					<br />
+					<p>
+						Back to
+						<a href='http://localhost:3000/'> home page</a>
+					</p>
 				</div>
 			</div>
 		</div>
 	);
 };
+
+/* <h4> User Logged In: </h4>
+	{user?.email}
+	<p>User ID: </p>
+	{user?.uid}
+	<br /> */
