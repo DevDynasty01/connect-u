@@ -54,14 +54,21 @@ INSERT INTO employees (guid, username, `name`, email, position, `role`) VALUES (
 INSERT INTO employees (guid, username, `name`, email, position, `role`) VALUES ('A3B1CF3C-792B-4BDA-8EAE-CF740CBC1102', 'ghopper', 'Grace Hopper', 'ghopper@devedynasty.com', 'Technical Lead', 'Employee', 'grace-hopper.jpeg');
 INSERT INTO employees (guid, username, `name`, email, position, `role`) VAlUES ('41339083-CC13-4064-8818-49A6580E0BB5', 'lpage', 'Larry Page', 'lpage@devdynasty.com', 'Project Manager', 'Manager', 'larry-page.jpg');
 
-4. Try it out!
+ 4. Try it out!
   To test the app as a manager user use:  
   email: ghopper@devedynasty.com 
   password: 123456
 
+  While logged in as a manager, you can add a new task  to Ada Lovelace and see 
+  it pop up when you login as her.
+
 
   To test the app as an employee user use: 
-
   email: alovelace@devdynasty.com
   password:123456
+
+  Also, feel free to create a new user and log in to your new account after.
+  
+
+  
 
